@@ -1,0 +1,62 @@
+{
+  "name": "@charlotteresnick/personal-site",
+  "version": "2.5.2",
+  "author": "Charlotte Resnick <charlotte.resnick@gmail.com>",
+  "description": "This is where I make things",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/helmet": "^0.0.48",
+    "@types/react": "^16.9.49",
+    "@types/theme-ui": "^0.3.6",
+    "prettier": "2.1.1"
+  },
+  "dependencies": {
+    "@loadable/component": "^5.13.1",
+    "@theme-ui/color": "^0.3.1",
+    "@theme-ui/components": "^0.3.1",
+    "@theme-ui/presets": "^0.3.0",
+    "gatsby": "^2.13.3",
+    "gatsby-plugin-catch-links": "^2.3.11",
+    "gatsby-plugin-feed": "^2.5.11",
+    "gatsby-plugin-mdx": "^1.2.40",
+    "gatsby-plugin-react-helmet": "^3.3.10",
+    "gatsby-plugin-sharp": "^2.6.36",
+    "gatsby-plugin-theme-ui": "^0.3.0",
+    "gatsby-plugin-typescript": "^2.4.18",
+    "gatsby-remark-images": "^3.3.30",
+    "gatsby-source-filesystem": "^2.3.30",
+    "gatsby-transformer-sharp": "^2.5.15",
+    "lodash.kebabcase": "^4.1.1",
+    "mdx-utils": "^0.2.0",
+    "prism-react-renderer": "^1.1.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-helmet": "^6.1.0",
+    "react-live": "^2.2.2",
+    "theme-ui": "^0.3.1",
+    "typeface-ibm-plex-sans": "^0.0.75"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-theme",
+    "gatsby-plugin"
+  ],
+  "bugs": {
+    "url": "https://github.com/charlotteresnick/personal-site"
+  },
+  "homepage": "https://charlotteresnick.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charlotteresnick/personal-site.git"
+  }
+}
