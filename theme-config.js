@@ -26,5 +26,5 @@ module.exports = {
   tagsPath: "/tags",
   showLineNumbers: true,
   showCopyButton: true,
-  formatString: "DD.MM.YYYY",
+  formatString: "MM.DD.YYYY",
 }

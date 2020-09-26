@@ -1,0 +1,131 @@
+---
+title: "Week Seven - 15 Minute Stoplight"
+date: 2020-08-21
+slug: "/week-seven"
+banner: /images/banner.jpg
+tags:
+  - General
+  - React
+---
+
+This week was all about React. We covered off on some basic whiteboarding problems, building a recipes app, creating some website mockups, forms, yarn versus npm, state and useState, React hooks, as well as components and props.
+
+Up until this point, I had heard that React is like a bulldozer compared to the technologies I had been using until now. I didn’t get it. Now I do.
+
+My React-Is-Indeed-A-Bulldozer aha moment went as follows: one of our morning exercises was to build a stoplight, a task I was required to complete in JavaScript as part of my application for General Assembly and something I genuinely struggled with at the time (it also took the better part of an afternoon). And I did it this time around in React, in 15 minutes. Plus I did all of the styling. And it wasn’t that hard? Bizarre. Bulldozer, I got it.
+
+Give my stoplight a go:
+
+```js react-live
+function App() {
+  const [selectedLight, setSelectedLight] = React.useState("stop")
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        height: "400px",
+        justifyContent: "center",
+      }}
+    >
+      <ButtonPannel setSelectedLight={setSelectedLight} />
+      <Stoplight selectedLight={selectedLight} />
+    </div>
+  )
+}
+
+function ButtonPannel(props) {
+  const { setSelectedLight } = props
+  const buttonStyle = {
+    width: "100px",
+    height: "40px",
+    fontSize: "20px",
+    backgroundColor: "lightslategray",
+    color: "white",
+    border: "lightslategray",
+    borderRadius: "10px",
+    marginRight: "10px",
+  }
+  return (
+    <div
+      style={{
+        height: "350px",
+        width: "100px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+      }}
+    >
+      <button style={buttonStyle} onClick={() => setSelectedLight("stop")}>
+        Stop
+      </button>
+      <button style={buttonStyle} onClick={() => setSelectedLight("slow")}>
+        Slow
+      </button>
+      <button style={buttonStyle} onClick={() => setSelectedLight("go")}>
+        Go
+      </button>
+    </div>
+  )
+}
+
+function Stoplight(props) {
+  const { selectedLight } = props
+  const lightStyle = {
+    height: "100px",
+    width: "100px",
+    border: "2px solid black",
+    borderRadius: "50px",
+  }
+  console.log(selectedLight)
+  const stop = (
+    <div
+      style={{
+        ...lightStyle,
+        backgroundColor: selectedLight === "stop" ? "red" : "gray",
+      }}
+    ></div>
+  )
+  const slow = (
+    <div
+      style={{
+        ...lightStyle,
+        backgroundColor: selectedLight === "slow" ? "yellow" : "gray",
+      }}
+    ></div>
+  )
+  const go = (
+    <div
+      style={{
+        ...lightStyle,
+        backgroundColor: selectedLight === "go" ? "green" : "gray",
+      }}
+    ></div>
+  )
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        height: "350px",
+        width: "150px",
+        backgroundColor: "lightslategrey",
+        border: "lightslategrey",
+        borderRadius: "40px",
+        marginLeft: "10px",
+      }}
+    >
+      {stop}
+      {slow}
+      {go}
+    </div>
+  )
+}
+
+render(<App />)
+```

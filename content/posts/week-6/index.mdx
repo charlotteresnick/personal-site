@@ -5,10 +5,49 @@ slug: "/week-six"
 banner: /images/banner.jpg
 tags:
   - Projects
+  - SQL
 ---
 
 I’ve been in full project mode all week and got a chance to really flex my SQL muscles again when I was creating a dropdown button that would display a user’s collections on the bottom of a queried drink recipe. It seemed easy in theory and proved a lot harder in execution. Here’s what I was going for:
 
-This recipe wasn’t saved to any of a user’s collections, so every collection the user had created showed in the dropdown. But when it is added to one, the collection disappears from the dropdown. Simple, right? The query doesn’t look so simple and was a bit of a monster to write.
+I've searched for an Old Fashioned recipe and found one! But when I click the + button at the bottom of the recipe, I have nowhere to save it because I haven't created a collection yet.
 
-Here’s a [link](https://blooming-journey-07077.herokuapp.com/) to the app on Heroku. To check out my code on Github, click [here](https://github.com/charlotteresnick/Drink-Finder).
+<img
+  src="/images/drinkfinder.png"
+  alt="Empty collections dropdown menu"
+  width="100%"
+/>
+
+And look at that! Now that I have a collection set up and this recipe isn't in it, the name's rendering in the dropdown!
+
+<img
+  src="/images/drinkfinder1.png"
+  alt="Populated collections dropdown menu"
+  width="100%"
+/>
+
+I gave the collection name a click and viola! The recipe has been saved and I can take a look at it whenever I'd like.
+
+<img src="/images/drinkfinder2.png" alt="Recipe in collection" width="100%" />
+
+Simple, right? The query doesn’t look so simple and was a bit of a monster to write.
+
+```js {4-12}
+static getByUserIdAndDrinkId(user_id, drink_id) {
+    return db
+    .query(`
+    SELECT id, name, bool_or(drink_exists) as "drink_exists" FROM
+      (SELECT c.id, c.name,
+        CASE WHEN s.drink_id = $1
+          THEN TRUE
+          ELSE FALSE
+        END drink_exists
+      FROM collections c LEFT JOIN saves s on s.collection_id = c.id
+      WHERE c.user_id = $2) as saves
+    GROUP BY saves.id, saves.name;
+    `, [drink_id, user_id])
+    .then((collections) => collections.map((collection) => new this(collection)));
+  }
+```
+
+And that's that! Here’s a [link](https://blooming-journey-07077.herokuapp.com/) to the app on Heroku. To check out my code on Github, click [here](https://github.com/charlotteresnick/Drink-Finder).

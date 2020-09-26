@@ -1,0 +1,30 @@
+---
+title: "Week Nine - Team Building"
+date: 2020-09-04
+slug: "/week-nine"
+banner: /images/banner.jpg
+tags:
+  - Projects
+  - React
+  - Chakra UI
+---
+
+Week nine has been all group work. My team decided to build a React app with an Express back end that'll allow users to save their streaming service subscriptions, search for any given movie or show, and view exactly which services they can watch it on. We’re also throwing in some basic CRUD functionality; users can create collections, save movies/shows to their collections, and update collection names as well as delete either the contents of collections or an entire collection.
+
+Before we started, my team decided to use a component library to tackle our UI; we decided on [Chakra](https://chakra-ui.com/). With Chakra, I can handle styling directly in React without css. Chakra has all sorts of components and custom themes to experiment with and has proven to be an exciting challenge. A component I’m most proud of was a modal we used on our register page for users to select their streaming services; it’s a product of a “how cool would it be if” moment I ran with. That said, it was an easy win and the results are pretty cool...in my opinion.
+
+Initially, I set the widgets in the modal to have a dark purple halo around them. But what if the Netflix widget could be red? And what if the Disney Plus widget could be blue? I was determined so I found Fast Average Color, an npm library that calculates the average color from an image (also works on videos), and got to work.
+
+And here’s what I threw together!
+
+Before: lights off:
+
+<img src="/images/modal2.png" alt="Halo-less modal" width="100%" />
+
+After: lights on:
+
+<img src="/images/modal.png" alt="Halo-ed modal" width="100%" />
+
+I ran into a couple problems when trying to implement Fast Average Color. So I decided to run it in a separate file and then plugged the colors into the subscription service objects. Regardless, I'm happy with how the modal turned out and how the entire project's turning out.
+
+Take a look at our repo [here](https://github.com/charlotteresnick/where2watch).
