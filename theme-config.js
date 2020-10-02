@@ -18,6 +18,10 @@ module.exports = {
       name: `GitHub`,
       url: `https://github.com/charlotteresnick/`,
     },
+    {
+      name: `Resume`,
+      url: `https://github.com/charlotteresnick/`,
+    },
   ],
   basePath: "/",
   blogPath: "/blog",

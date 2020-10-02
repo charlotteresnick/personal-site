@@ -1,0 +1,57 @@
+---
+title: "Last Day - Project Four, Admin Dash Done"
+date: 2020-09-28
+slug: "/last-day"
+banner: /images/banner.jpg
+tags:
+  - Projects
+  - React
+  - General
+---
+
+And that's it, folks. I'm done. I'm tired. I'm really proud of my project. And I'm sad to see bootcamp go.
+
+But before I get into bootcamp reflections, here's a look at my admin dashboard:
+
+Users table:
+
+<img
+  src="/images/admindashusers.png"
+  alt="Admin Dashboard Users Table"
+  width="100%"
+/>
+
+Classes table:
+
+<img
+  src="/images/admindashclasses.png"
+  alt="Admin Dashboard Classes Table"
+  width="100%"
+/>
+
+With React table, Chakra UI, and Material UI, I was able to build exactly what I wanted in the admin dashboard. Admin can edit user information, which is prepopulated when an admin clicks on the 'Edit' action on a user row:
+
+<img
+  src="/images/edituserinfo.png"
+  alt="Edit User Information Modal"
+  width="100%"
+/>
+
+Create new and edit preexsiting classes using the 'Add Class' button or 'Edit' action on the Admin Classes table:
+
+<img src="/images/createclass1.png" alt="Create Class Modal" width="100%" />
+(Class time edit dropdown I created using Material UI):
+
+<img
+  src="/images/editclasstime.png"
+  alt="Edit Class Time Dropdown"
+  width="100%"
+/>
+
+Between reading and implementation, building out the admin dashboard took much longer than I had anticipated, which meant I was only able to read about how to integrate Stripe. Regardless, I'm planning to have that done this week and will write about how that goes.
+
+I built the site using PostgreSQL, Express, React, and Nodejs. Having learned about Rails towards the end of the bootcamp (and really digging it), I used Objectionjs; an ORM which, unfortunately, doesn't have a built in query builder. As such, I used Knex to handle query building. Using Objection with Knex allowed me to set up my relations in a way similar to Rails, enabling me to write the way I wanted without having to context switch between Rails and JavaScript.
+
+Overall, I'm impressed! I have a lot of ideas for what I'd like to add to the site during my free time (by free time I mean the time I have between interview prep and more interview prep).
+
+Check back for more updates! And here's a [link](https://github.com/charlotteresnick/charlotte-resnick-yoga) to my Project 4 repo.
