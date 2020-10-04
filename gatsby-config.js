@@ -5,7 +5,7 @@ module.exports = {
     siteTitle: `charlotteresnick.dev`,
     siteTitleAlt: `Charlotte Resnick - Hello!`,
     siteHeadline: `a blog about my journey to software engineer`,
-    siteUrl: `https://charlotteresnick.dev`,
+    siteUrl: `https://www.charlotteresnick.dev`,
     siteDescription: `A site for my thoughts and musings`,
     siteLanguage: `en`,
     siteImage: `/images/banner.jpg`,
