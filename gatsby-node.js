@@ -65,6 +65,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       tags: [PostTag]
       banner: File @fileByRelativePath
       description: String
+      redirects: [String]
     }
     
     type PostTag {
@@ -89,6 +90,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       html: String! @mdxpassthrough(fieldName: "html")
       timeToRead: Int @mdxpassthrough(fieldName: "timeToRead")
       tags: [PostTag]
+      redirects: [String]
       banner: File @fileByRelativePath
       description: String
     }
@@ -167,6 +169,7 @@ exports.onCreateNode = ({
   // Check for "posts" and create the "Post" type
   if (node.internal.type === `Mdx` && source === postsPath) {
     let modifiedTags
+    let modifiedRedirects
 
     if (node.frontmatter.tags) {
       modifiedTags = node.frontmatter.tags.map(tag => ({
@@ -177,11 +180,20 @@ exports.onCreateNode = ({
       modifiedTags = null
     }
 
+    if (node.frontmatter.redirects) {
+      modifiedRedirects = node.frontmatter.redirects.map(redirect =>
+        kebabCase(redirect)
+      )
+    } else {
+      modifiedRedirects = null
+    }
+
     const fieldData = {
       slug: node.frontmatter.slug ? node.frontmatter.slug : undefined,
       title: node.frontmatter.title,
       date: node.frontmatter.date,
       tags: modifiedTags,
+      redirects: modifiedRedirects,
       banner: node.frontmatter.banner,
       description: node.frontmatter.description,
     }
@@ -241,7 +253,7 @@ const tagTemplate = require.resolve(`./src/templates/tag-query.tsx`)
 const tagsTemplate = require.resolve(`./src/templates/tags-query.tsx`)
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   const { basePath, blogPath, tagsPath, formatString } = themeConfig
 
@@ -271,6 +283,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       allPost(sort: { fields: date, order: DESC }) {
         nodes {
           slug
+          redirects
         }
       }
       allPage {
@@ -305,6 +318,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         formatString,
       },
     })
+
+    if (post.redirects) {
+      post.redirects.forEach(redirect => {
+        console.log(redirect, "->", post.slug)
+        createRedirect({
+          fromPath: redirect,
+          toPath: post.slug,
+          isPermanent: true,
+          redirectInBrowser: true,
+        })
+      })
+    }
   })
 
   const pages = result.data.allPage.nodes

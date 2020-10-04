@@ -20,7 +20,7 @@ module.exports = {
     },
     {
       name: `Resume`,
-      url: `https://github.com/charlotteresnick/`,
+      url: `/resume`,
     },
   ],
   basePath: "/",
