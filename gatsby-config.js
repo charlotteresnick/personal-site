@@ -8,7 +8,7 @@ module.exports = {
     siteUrl: `https://www.charlotteresnick.dev`,
     siteDescription: `A site for my thoughts and musings`,
     siteLanguage: `en`,
-    siteImage: `/images/banner.jpg`,
+    siteImage: `/images/banner.png`,
     author: `@cresnick`,
   },
   plugins: [
